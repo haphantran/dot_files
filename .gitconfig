@@ -1,0 +1,57 @@
+[push]
+    default = simple
+    autoSetupRemote = true
+    followTags = true
+[user]
+	email = haphantran@gmail.com
+	name = Ha Phan Tran
+	signingKey = ""
+[column]
+        ui = auto
+[init]
+    defaultBranch = main
+[branch]
+    sort = -committerdate
+[alias]
+	co = "!f() { if [[ \"$1\" =~ ^-[0-9]+$ ]]; then git checkout \"@{-${1#-}}\"; else git checkout \"$@\"; fi }; f"
+	br = branch
+	st = status
+	p = push
+	ll = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+	last = log -1 HEAD
+	cm = commit
+	rv = remote -v
+	d = diff
+	dv = difftool -t vimdiff -y
+	amend = commit --amend --date=now --no-edit
+	cam = commit -am
+	brv = branch -vv
+	brs = branch --sort=-committerdate --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]'
+[gpg]
+	format = openpgp
+	program = gpg
+[help]
+    autocorrect = prompt
+[rerere]
+    enabled = true
+    autoupdate = true
+[core]
+    excludesfile = ~/.gitignore
+    excludesfile = /Users/haphantran/.gitignore_global
+[commit]
+	gpgSign = false
+    verbose = true
+[tag]
+    sort = version:refname
+	forceSignAnnotated = false
+[gpg "ssh"]
+	program = ssh-keygen
+	allowedSignersFile = ""
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+[rebase]
+    autoSquash = true
+    autoStash = true
+    updateRefs = true
